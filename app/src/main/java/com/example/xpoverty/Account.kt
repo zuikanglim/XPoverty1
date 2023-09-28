@@ -1,15 +1,20 @@
 package com.example.xpoverty
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.content.Intent
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.xpoverty.databinding.AccountBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
 
 class Account : AppCompatActivity() {
     private lateinit var binding : AccountBinding
@@ -31,15 +36,40 @@ class Account : AppCompatActivity() {
 
         val user = auth.currentUser
 
-        binding.tvDetails.text = "loongxi"
-        binding.tvEmail.text = "loongxi@gmail.com"
-        binding.tvPhoneNo.text = "01110448596"
+        //binding.tvDetails.text = "loongxi"
+        //binding.tvEmail.text = "loongxi@gmail.com"
+        //binding.tvPhoneNo.text = "01110448596"
+
+        if (user != null) {
+            val userRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("UserDB")
+
+
+            userRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val email: String? = dataSnapshot.child("email").getValue(String::class.java)
+                        val username: String? = dataSnapshot.child("userList").child(user.uid).child("username").getValue(String::class.java)
+                        val phoneNumber: String? = dataSnapshot.child("phoneNumber").getValue(String::class.java)
+
+                        // Set the retrieved data into TextViews
+                        binding.tvDetails.text = username
+                        binding.tvEmail.text = email
+                        binding.tvPhoneNo.text = phoneNumber
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    binding.tvDetails.text = "limzk"
+                }
+            })
+        }
 
         if(user != null && intent.getStringExtra("username") != null){
             val intent = intent
-            val username = intent.getStringExtra("username")
-            val email = intent.getStringExtra("email")
-            val phoneNumber = intent.getIntExtra("phoneNumber", 0)
+
+        val username = intent.getStringExtra("username")
+        val email = intent.getStringExtra("email")
+        val phoneNumber = intent.getIntExtra("phoneNumber", 0)
             binding.tvDetails.text = username
             binding.tvEmail.text = email
             binding.tvPhoneNo.text = phoneNumber.toString()

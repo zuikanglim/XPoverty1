@@ -9,7 +9,7 @@ class News : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news)
+        setContentView(R.layout.activity_intro)
 
         val bnv =  findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bnv.selectedItemId = R.id.home
