@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5DC"
+    tools:context=".Event">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <ScrollView
+        android:id="@+id/eventScroll"
+        android:layout_width="367dp"
+        android:layout_height="669dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/eventS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/eventS"
+                android:textAlignment="center"
+                android:textSize="34sp" />
+
+            <ImageView
+                android:id="@+id/event1"
+                android:layout_width="378dp"
+                android:layout_height="235dp"
+                android:contentDescription="@string/eventS"
+                android:scaleY="1.15"
+                app:srcCompat="@drawable/event1" />
+
+            <Button
+                android:id="@+id/learn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/learn_bg"
+                android:text="@string/eventL"
+                tools:ignore="DuplicateSpeakableTextCheck"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/event2"
+                android:layout_width="match_parent"
+                android:layout_height="211dp"
+                android:contentDescription="@string/eventS"
+                android:scaleY="1.35"
+                app:srcCompat="@drawable/event2" />
+
+            <Button
+                android:id="@+id/learn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/learn_bg"
+                android:text="@string/eventL" />
+
+            <ImageView
+                android:id="@+id/event3"
+                android:layout_width="match_parent"
+                android:layout_height="217dp"
+                android:contentDescription="@string/eventS"
+                android:scaleX="1.6"
+                app:srcCompat="@drawable/event3" />
+
+            <Button
+                android:id="@+id/learn3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="170dp"
+                android:background="@drawable/learn_bg"
+                android:text="@string/eventL" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

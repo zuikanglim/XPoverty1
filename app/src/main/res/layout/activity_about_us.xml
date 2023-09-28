@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5DC"
+    tools:context=".AboutUs">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <io.github.florent37.shapeofview.shapes.RoundRectView
+        android:id="@+id/contact"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="450dp"
+        android:elevation="4dp"
+        android:text="@string/contact"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:translationX="5dp"
+        android:translationY="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:shape_roundRect_borderColor="@android:color/black"
+        app:shape_roundRect_borderWidth="2dp"
+        app:shape_roundRect_bottomLeftRadius="10dp"
+        app:shape_roundRect_bottomRightRadius="10dp"
+        app:shape_roundRect_topLeftRadius="10dp"
+        app:shape_roundRect_topRightRadius="10dp">
+
+        <TextView
+            android:id="@+id/contactText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/contact"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+    </io.github.florent37.shapeofview.shapes.RoundRectView>
+
+    <io.github.florent37.shapeofview.shapes.CircleView
+        android:id="@+id/contactPic"
+        android:layout_width="70dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="425dp"
+        android:elevation="4dp"
+        android:translationX="35dp"
+        android:translationY="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/contact"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_circle_borderColor="@android:color/black"
+        app:shape_circle_borderWidth="2dp">
+
+        <ImageView
+            android:id="@+id/contactIcon"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:contentDescription="contactIcon"
+            android:scaleX="2.5"
+            android:scaleY="2.5"
+            android:translationY="25dp"
+            app:srcCompat="@drawable/contact_logo"
+            tools:ignore="ImageContrastCheck" />
+
+    </io.github.florent37.shapeofview.shapes.CircleView>
+
+    <ScrollView
+        android:id="@+id/pageScroll"
+        android:layout_width="314dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/pageS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/aboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_us"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/unga"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/aboutusdes"
+                app:srcCompat="@drawable/unite" />
+
+            <TextView
+                android:id="@+id/aboutUsText"
+                android:layout_width="match_parent"
+                android:layout_height="266dp"
+                android:text="@string/about_us_text" />
+
+            <io.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/sgProfilePic"
+                android:layout_width="match_parent"
+
+                android:layout_height="103dp"
+                android:layout_marginTop="56dp"
+                android:elevation="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/contact"
+                app:layout_constraintHorizontal_bias="0.066"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pageScroll"
+                app:shape_circle_borderColor="@android:color/black"
+                app:shape_circle_borderWidth="2dp">
+
+                <ImageView
+                    android:id="@+id/sgPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:contentDescription="sgIcon"
+                    android:scaleX="2.5"
+                    android:scaleY="2.5"
+                    android:translationY="25dp"
+                    app:srcCompat="@drawable/sg" />
+
+            </io.github.florent37.shapeofview.shapes.CircleView>
+
+            <TextView
+                android:id="@+id/sgDes"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sg_text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

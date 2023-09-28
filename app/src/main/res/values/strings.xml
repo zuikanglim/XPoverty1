@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">X Poverty</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_bottom_navigation">bottomNavigation</string>
+
+    //melson
+    <string-array name="bank_type">
+        <item>Public Bank</item>
+        <item>Maybank</item>
+        <item>CIMB Bank</item>
+        <item>Hong Leong Bank</item>
+        <item>RHB Bank</item>
+    </string-array>
+
+    //zhangyuan
+    <string name="large_text">
+        "Poverty is the state of having few material possessions or little income. Poverty can have "
+        "diverse social, economic, and political causes and effects. When evaluating poverty in statistics "
+        "or economics there are two main measures: absolute poverty compares income against the amount needed "
+        "to meet basic personal needs, such as food, clothing, and shelter; relative poverty measures when "
+        "a person cannot meet a minimum level of living standards, compared to others in the same time and place."
+        "The definition of relative poverty varies from one country to another, or from one society to another.\n\n"
+
+        "Statistically, as of 2019, most of the world's population lives in poverty: in PPP dollars, "
+        "85% of people live on less than $30 per day, two-thirds live on less than $10 per day, and "
+        "10% live on less than $1.90 per day (extreme poverty). According to the World Bank Group in 2020, "
+        "more than 40% of the poor live in conflict-affected countries.Even when countries experience "
+        "economic development, the poorest citizens of middle-income countries frequently do not gain an "
+        "adequate share of their countries' increased wealth to leave poverty. " \n\n
+
+        "Governments and non-governmental organizations have experimented with a number of different policies"
+        "and programs for poverty alleviation, such as electrification in rural areas or housing first policies"
+        "in urban areas. The international policy frameworks for poverty alleviation, established by the United"
+        "Nations in 2015, are summarized in Sustainable Development Goal 1: "No Poverty"." \n\n
+    </string>
+    <string name="about_us_text">
+        "The main policy-making organ of the Organization. Comprising all Member States, it provides a unique forum for"
+        "multilateral discussion of the full spectrum of international issues covered by the Charter of the United Nations.\n\n"
+
+        "The UN’s Membership has grown from the original 51 Member States in 1945 to the current 193 Member States."
+        "All UN Member States are members of the General Assembly.  States are admitted to membership by a decision"
+        "of the General Assembly upon the recommendation of the Security Council.\n\n"
+    </string>
+    <string name="sg_text">
+        "The Secretary-General is Chief Administrative Officer of the UN – and is also a symbol of the Organization's"
+        "ideals and an advocate for all the world's peoples, especially the poor and vulnerable."\n\n
+
+        "The Secretary-General is appointed by the General Assembly on the recommendation of the Security Council for"
+        "a 5-year, renewable term."\n\n
+
+        "The current Secretary-General, and the 9th occupant of the post, is António Guterres of Portugal, who took"
+        "office on 1 January 2017."\n\n
+
+        "On the 18th of June, 2021, Guterres was re-appointed to a second term, pledging as his priority to continue"
+        "helping the world chart a course out of the COVID-19 pandemic."\n\n
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_name">Poverty</string>
+    <string name="povertyintro">povertyIntro</string>
+    <string name="todo">TODO</string>
+    <string name="more">ABOUT US</string>
+    <string name="scrollpic">scrollPic</string>
+    <string name="about_us">About Us</string>
+    <string name="aboutusdes">aboutUsDes</string>
+    <string name="contact">012 - 3456789</string>
+    <string name="eventS">Event</string>
+    <string name="eventL">Learn More</string>
+    <string name="info">
+        "DATE: April 13, 2022"\n
+        "TIME: 9:30 - 11:00 AM ET"\n
+        "LOCATION: Webinar United States"\n
+        "PROGRAM AREA: Social Protection"\n
+        "COUNTRY: Niger, Senegal, Zambia                     "</string>
+    <string name="eventInfo">
+        "The International Day for the Eradication of Poverty is held annually on 17 October to provide:"\n\n
+
+        ">  an opportunity to acknowledge the effort and"\n
+        "    struggle of people living in poverty;"\n
+        ">  a chance for them to make their concerns heard; "\n
+        ">  and a moment to recognize that poor people are the"\n
+        "    first ones to fight against poverty."\n\n
+
+        "Through resolution 47/196, adopted on 22 December 1992,"
+        "the UN General Assembly declared 17 October "
+        "as the International Day for the Eradication of Poverty"
+        "and invited all States to devote the Day to "
+        "presenting and promoting, as appropriate in the national context,"
+        "concrete activities with regard "
+        "to the eradication of poverty and destitution."\n\n
+
+        "To receive more event notices, news and analysis,"\n
+        "follow us on Facebook.                           "
+
+
+    </string>
+</resources>

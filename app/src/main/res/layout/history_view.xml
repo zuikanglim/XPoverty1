@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="45dp"
+    android:background="#EEE6FD">
+
+    <TextView
+        android:id="@+id/tvDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="monospace"
+        android:text="Date"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/tfDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="..."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvDate2"
+        app:layout_constraintStart_toStartOf="@+id/tvDate2"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate2" />
+
+    <TextView
+        android:id="@+id/tvTransactionNo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="monospace"
+        android:text="Transaction No"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfDate2" />
+
+    <TextView
+        android:id="@+id/tfTransactionNo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:text="..."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTransactionNo2"
+        app:layout_constraintStart_toEndOf="@+id/tvTransactionNo2"
+        app:layout_constraintTop_toTopOf="@+id/tvTransactionNo2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvBankName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#BA3B3B"
+        android:fontFamily="monospace"
+        android:text="Bank Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvTransactionNo2"
+        app:layout_constraintStart_toStartOf="@+id/tvTransactionNo2"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransactionNo2" />
+
+    <TextView
+        android:id="@+id/tfBankName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:text="..."
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/tvBankName2"
+        app:layout_constraintTop_toTopOf="@+id/tvBankName2" />
+
+    <TextView
+        android:id="@+id/tvPaid2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="monospace"
+        android:text="Amount Paid"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvBankName2"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="@+id/tvBankName2"
+        app:layout_constraintTop_toBottomOf="@+id/tvBankName2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tfPaid2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="20dp"
+        android:text="..."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPaid2"
+        app:layout_constraintStart_toEndOf="@+id/tvPaid2"
+        app:layout_constraintTop_toTopOf="@+id/tvPaid2"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

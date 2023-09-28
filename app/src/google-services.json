@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "334615460583",
+    "project_id": "xpovertytest1",
+    "storage_bucket": "xpovertytest1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334615460583:android:7a5631718ed5ab6e3dc042",
+        "android_client_info": {
+          "package_name": "com.example.xpoverty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWqC9gOT_RVAc42_Y4pAXEzis4QZWZxBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
