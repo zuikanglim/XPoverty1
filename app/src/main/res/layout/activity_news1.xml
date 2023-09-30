@@ -4,33 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5DC"
-    tools:context=".Event1">
+    android:background="#EEE6FD"
+    tools:context=".News1">
 
     <ImageView
-        android:id="@+id/event_pic"
+        android:id="@+id/news_pic"
         android:layout_width="325dp"
         android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/event1" />
+        app:srcCompat="@drawable/news1" />
 
-    <me.biubiubiu.justifytext.library.JustifyTextView
-        android:id="@+id/info1"
-        android:layout_width="325dp"
+
+    <TextView
+        android:id="@+id/date1"
+        android:layout_width="324dp"
         android:layout_height="80dp"
         android:layout_marginTop="12dp"
-        android:textSize="12sp"
+        android:text="@string/newsdate1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_pic"
-        tools:text="@string/info" />
+        app:layout_constraintTop_toBottomOf="@+id/news_pic" />
 
     <ScrollView
-        android:id="@+id/eventFirst"
+        android:id="@+id/newfirst"
         android:layout_width="325dp"
         android:layout_height="224dp"
         android:layout_marginLeft="15dp"
@@ -38,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info1">
+        app:layout_constraintTop_toBottomOf="@+id/date1">
 
         <LinearLayout
             android:id="@+id/eventDetail"
@@ -46,29 +45,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/mapL"
-                android:layout_width="325dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="250dp"
-                android:layout_marginRight="250dp"
-                android:text="MAP"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <me.biubiubiu.justifytext.library.JustifyTextView
-                android:id="@+id/event1detail"
+                android:id="@+id/news1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/eventInfo"
-                android:textSize="12sp" />
+                android:text="@string/newsinfo1"
+                android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/btnRegisterEvent1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register" />
         </LinearLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import com.example.xpoverty.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
 
 class Register : AppCompatActivity() {
@@ -20,6 +21,7 @@ class Register : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
         database = FirebaseDatabase.getInstance().getReference("UserDB")
         //val user = auth.currentUser
 
@@ -48,10 +50,32 @@ class Register : AppCompatActivity() {
                 database.child("userList").child(binding.etUsernameR.text.toString()).child("username").get().addOnSuccessListener {
                     if (it.value.toString() == binding.etUsernameR.text.toString()){
                         binding.tvResultR.text = "Username is already exist!!"
-                    }else{
-                                val newUser = User(binding.etUsernameR.text.toString(),binding.etPasswordR.text.toString(),Integer.parseInt(binding.etPhoneNumber.text.toString()), binding.etEmail.text.toString())
-                                userRegister(binding.etEmail.text.toString(),binding.etPasswordR.text.toString())
-                                addNewUser(newUser)
+                    }else {
+
+                        val newUser = User(
+                            binding.etUsernameR.text.toString(),
+                            binding.etPasswordR.text.toString(),
+                            Integer.parseInt(binding.etPhoneNumber.text.toString()),
+                            binding.etEmail.text.toString()
+                        )
+                        userRegister(
+                            binding.etEmail.text.toString(),
+                            binding.etPasswordR.text.toString()
+                        )
+                        addNewUser(newUser)
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(binding.etUsernameR.text.toString())// Set the full name as the display name
+                            .build()
+
+                        user?.updateProfile(profileUpdates)
+                            ?.addOnCompleteListener { profileUpdateTask ->
+                                if (profileUpdateTask.isSuccessful) {
+                                    // User's display name has been updated
+                                    // You can now store other user data (like email, phone number, etc.) in the database
+                                } else {
+                                    // Handle the failure to update the display name
+                                }
+                            }
                     }
                 }
             }

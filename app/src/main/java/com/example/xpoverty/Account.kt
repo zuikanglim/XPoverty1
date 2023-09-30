@@ -1,6 +1,5 @@
 package com.example.xpoverty
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -28,52 +27,55 @@ class Account : AppCompatActivity() {
         binding = AccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+//        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+//        val userUid = sharedPreferences.getString("users", "")
+
         //declaration
         imgProfile = findViewById(R.id.imgProfile)
-
-        auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().reference
-
-        val user = auth.currentUser
-
         //binding.tvDetails.text = "loongxi"
         //binding.tvEmail.text = "loongxi@gmail.com"
         //binding.tvPhoneNo.text = "01110448596"
+        val auth = FirebaseAuth.getInstance()
+        val database = FirebaseDatabase.getInstance()
+        val user = auth.currentUser
+        if(user != null) {
 
-        if (user != null) {
-            val userRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("UserDB")
+            binding.tvEmail.text = user?.email
+            binding.tvDetails.text = user.displayName
+            // Create a reference to the "users" node in the database
+            val phoneNumberRef = database.getReference("UserDB/userList/${user.displayName}")
 
+            // Retrieve the user's phone number from the database
+            if (phoneNumberRef != null) {
+                phoneNumberRef.child("phoneNumber").addListenerForSingleValueEvent(
+                    object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            val phoneNumber = dataSnapshot.getValue(Int::class.java)
+                            if (phoneNumber != null) {
+                                // Use the retrieved phone number as needed
+                                binding.tvPhoneNo.text = phoneNumber.toString()
+                            }
+                        }
 
-            userRef.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        val email: String? = dataSnapshot.child("email").getValue(String::class.java)
-                        val username: String? = dataSnapshot.child("userList").child(user.uid).child("username").getValue(String::class.java)
-                        val phoneNumber: String? = dataSnapshot.child("phoneNumber").getValue(String::class.java)
-
-                        // Set the retrieved data into TextViews
-                        binding.tvDetails.text = username
-                        binding.tvEmail.text = email
-                        binding.tvPhoneNo.text = phoneNumber
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // Handle database query cancellation or errors
+                        }
                     }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    binding.tvDetails.text = "limzk"
-                }
-            })
+                )
+            }
         }
 
-        if(user != null && intent.getStringExtra("username") != null){
-            val intent = intent
-
-        val username = intent.getStringExtra("username")
-        val email = intent.getStringExtra("email")
-        val phoneNumber = intent.getIntExtra("phoneNumber", 0)
-            binding.tvDetails.text = username
-            binding.tvEmail.text = email
-            binding.tvPhoneNo.text = phoneNumber.toString()
-        }
+//        if(user != null && intent.getStringExtra("username") != null){
+//            val intent = intent
+//
+//        val username = intent.getStringExtra("username")
+//        val email = intent.getStringExtra("email")
+//        val phoneNumber = intent.getIntExtra("phoneNumber", 0)
+//            binding.tvDetails.text = username
+//            binding.tvEmail.text = email
+//            binding.tvPhoneNo.text = phoneNumber.toString()
+//        }
 
         binding.tvLogout.setOnClickListener(){
             auth.signOut()
@@ -97,23 +99,23 @@ class Account : AppCompatActivity() {
         }
 
 
-/*        var getdata = object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-            }
+        /*        var getdata = object: ValueEventListener{
+                    override fun onCancelled(p0: DatabaseError) {
+                    }
 
-            override fun onDataChange(p0: DataSnapshot) {
-                var sb = StringBuilder()
-                for(i in p0.children){
-                    var username = i.child("username").getValue()
-                    var email = i.child("email").getValue()
-                    var phoneNumber = i.child("phoneNumber").getValue()
-                    sb.append("${i.key} $username $email $phoneNumber")
+                    override fun onDataChange(p0: DataSnapshot) {
+                        var sb = StringBuilder()
+                        for(i in p0.children){
+                            var username = i.child("username").getValue()
+                            var email = i.child("email").getValue()
+                            var phoneNumber = i.child("phoneNumber").getValue()
+                            sb.append("${i.key} $username $email $phoneNumber")
+                        }
+                        binding.tvPhoneNo.setText(sb)
+                    }
                 }
-                binding.tvPhoneNo.setText(sb)
-            }
-        }
-        database.addValueEventListener(getdata)
-        database.addListenerForSingleValueEvent(getdata)*/
+                database.addValueEventListener(getdata)
+                database.addListenerForSingleValueEvent(getdata)*/
 
         val bnv =  findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bnv.selectedItemId = R.id.account
@@ -164,7 +166,7 @@ class Account : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE){
             imgProfile.setImageURI(data?.data) // handle chosen image
         }
     }

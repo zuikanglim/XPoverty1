@@ -74,8 +74,23 @@
             android:name="com.example.xpoverty.Event"
             android:exported="true" />
         <activity
+            android:name="com.example.xpoverty.Introduction"
+            android:exported="true" />
+        <activity
             android:name="com.example.xpoverty.News"
             android:exported="true" />
+        <activity
+            android:name="com.example.xpoverty.News1"
+            android:exported="true"
+            android:parentActivityName="com.example.xpoverty.News" />
+        <activity
+            android:name="com.example.xpoverty.News2"
+            android:exported="true"
+            android:parentActivityName="com.example.xpoverty.News"/>
+        <activity
+            android:name="com.example.xpoverty.News3"
+            android:exported="true"
+            android:parentActivityName="com.example.xpoverty.News"/>
         <activity
             android:name="com.example.xpoverty.AboutUs"
             android:exported="true" />

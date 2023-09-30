@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.widget.Toast
 import com.example.xpoverty.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -26,9 +27,9 @@ class Login : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("UserDB")
 
         binding.btnContactUsL.setOnClickListener(){
-                val dialIntentT = Intent(Intent.ACTION_DIAL)
-                dialIntentT.data = Uri.parse("tel:"+ "0123456789")
-                startActivity(dialIntentT)
+            val dialIntentT = Intent(Intent.ACTION_DIAL)
+            dialIntentT.data = Uri.parse("tel:"+ "0123456789")
+            startActivity(dialIntentT)
         }
 
         binding.btnLogin.setOnClickListener(){
@@ -79,6 +80,8 @@ class Login : AppCompatActivity() {
                 intent.putExtra("email", userProfile.email);
                 intent.putExtra("phoneNumber", userProfile.phoneNumber);
                 Toast.makeText(this,"Successfully Read", Toast.LENGTH_SHORT).show()
+                val name = username
+                loginProfileUser(name)
                 binding.tvResult.text = "Login Successfully!!!"
                 startActivity(intent)
 
@@ -90,5 +93,22 @@ class Login : AppCompatActivity() {
             Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
             binding.tvResult.text = "Login Failed!!!"
         }
+    }
+
+    private fun loginProfileUser(name: String) {
+        val user = auth.currentUser
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName(binding.etUsername.text.toString())// Set the full name as the display name
+            .build()
+
+        user?.updateProfile(profileUpdates)
+            ?.addOnCompleteListener { profileUpdateTask ->
+                if (profileUpdateTask.isSuccessful) {
+                    // User's display name has been updated
+                    // You can now store other user data (like email, phone number, etc.) in the database
+                } else {
+                    // Handle the failure to update the display name
+                }
+            }
     }
 }

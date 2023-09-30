@@ -75,10 +75,10 @@
         "PROGRAM AREA: Social Protection"\n
         "COUNTRY: Niger, Senegal, Zambia                     "</string>
     <string name="newsinfo1">
-        "In a move to ease the burden of the"
-        "underprivileged during the Covid-19 pandemic, "
-        "we has distribute foods item to "
-        "who are in need and poverty in Penang"
+        "In a move to ease the burden of the" \n
+        "underprivileged during the Covid-19 pandemic, " \n
+        "we has distribute foods item to " \n
+        "who are in need and poverty in Penang" \n
     </string>
     <string name="newsdate1">
         "DATE: September 09, 2020"\n
@@ -99,15 +99,15 @@
         "Number of person involved : 30 person "\n
         "COUNTRY: Penang, Malaysia.                     "</string>
     <string name="newsinfo3">
-        "Wherever men and women are condemned to live in poverty,"
-        "human rights are violated."
-        "To come  together to ensure those rights be respected is our solemn duty,"
-        "Hence, We held the Stop Poverty Campaign"
-        "Telling a diversity of stories: Compiling and making known the many Stories of Change,"
-        "in English,Mandarins that show when we work together poverty "
-        "and social exclusion can be overcome, which builds peace."
-        "Joining our voices together: To celebrate the courage and efforts of people living in poverty"
-        "throughout history, featuring their songs of resistance and hope in shows and concerts. "
+        "Wherever men and women are condemned to live in poverty," \n
+        "human rights are violated.
+        "To come  together to ensure those rights be respected is our solemn duty," \n
+        "Hence, We held the Stop Poverty Campaign" \n
+        "Telling a diversity of stories: Compiling and making known the many Stories of Change," \n
+        "in English,Mandarins that show when we work together poverty " \n
+        "and social exclusion can be overcome, which builds peace." \n
+        "Joining our voices together: To celebrate the courage and efforts of people living in poverty " \n
+        "throughout history, featuring their songs of resistance and hope in shows and concerts. " \n
     </string>
     <string name="newsdate3">
         "DATE: February 12 2022"\n
