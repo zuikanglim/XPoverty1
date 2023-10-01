@@ -1,18 +1,24 @@
 package com.example.xpoverty
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.*
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.xpoverty.databinding.PaymentBinding
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Random
 
 
 class Payment : AppCompatActivity(), AdapterView.OnItemSelectedListener{
@@ -22,21 +28,23 @@ class Payment : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     lateinit var spinner: Spinner
     lateinit var tvTypeOfBank: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    @SuppressLint("SimpleDateFormat")
+    override fun onCreate (savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = PaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //database things
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().getReference("Donor")
+        database = FirebaseDatabase.getInstance().getReference("UserDB")
+        // Initialize Firebase
+        FirebaseApp.initializeApp(this)
 
 
         //declarations
-        val number = "123123"
+        val number = generateRandomSixDigitNumber()
         tvTypeOfBank = findViewById(R.id.tvTypeOfBank)
         spinner = findViewById(R.id.spinner)
-
 
         //receiving values from other activity
         val intent = intent
@@ -62,7 +70,7 @@ class Payment : AppCompatActivity(), AdapterView.OnItemSelectedListener{
                 binding.tvHint3.setVisibility(View.VISIBLE)
                 binding.tvHint2.setVisibility(View.INVISIBLE)
             }
-            else if(binding.tvTac.text.toString() != number){
+            else if(binding.tvTac.text.toString() != number.toString()){
                 binding.tvHint3.setVisibility(View.INVISIBLE)
                 Toast.makeText(this, "Your TAC no. is incorrect", Toast.LENGTH_SHORT).show()
             }
@@ -71,27 +79,33 @@ class Payment : AppCompatActivity(), AdapterView.OnItemSelectedListener{
                 val amount: String = binding.tvAmount.getText().toString()
                 val bank: String = tvTypeOfBank.getText().toString()
                 val cardNumber: String = binding.tvAccount.getText().toString()
-                val message: String = "You have successfully transferred $amount using $bank linked with card number $cardNumber."
+                val databaseReference = FirebaseDatabase.getInstance().getReference("Donor")
+                val sdf = SimpleDateFormat("dd/M/yyyy")
+                val currentDate = sdf.format(Date())
+                data class Donor(val amount: String, val bank: String, val cardNumber: String,
+                                 val currentDate: String, val transactionNo: String)
+                val donor = Donor(amount, bank, cardNumber ,currentDate, "ABC104")
+                databaseReference.child("Name List").child("limzk").setValue(donor)
+
+                    val message: String =
+                        "You have successfully transferred $amount using $bank linked with card number $cardNumber."
                 NotificationHelper(this, message).Notification()
 
-                if(cardNumber == "1234 4567"){
+                /* if(cardNumber == "1234 4567"){
                     val newDonor1 = Donor("12/12/2012", "ABC101", "Hong Leong Bank", "RM 25")
                     val newDonor2 = Donor("5/5/2015", "ABC102", "Maybank", "RM 100")
                     val newDonor3 = Donor("2/2/2022", "ABC103", "Public Bank", "RM 250")
                     val newDonor4 = Donor("10/10/2020", "ABC105", "RHB Bank", "RM 500")
-                    database.child("Donors' Information").child("8888 1234 0000 5678").setValue(newDonor1)
-                    database.child("Donors' Information").child("1512 0987 5428 2987").setValue(newDonor2)
-                    database.child("Donors' Information").child("64129856").setValue(newDonor3)
-                    database.child("Donors' Information").child("9876 1234 5193 2096").setValue(newDonor4)
+                    databaseReference.child("Donors' Information").child("8888 1234 0000 5678").setValue(newDonor1)
+                    databaseReference.child("Donors' Information").child("1512 0987 5428 2987").setValue(newDonor2)
+                    databaseReference.child("Donors' Information").child("64129856").setValue(newDonor3)
+                    databaseReference.child("Donors' Information").child("9876 1234 5193 2096").setValue(newDonor4)
                 }
-
-                //real-time date
-                val sdf = SimpleDateFormat("dd/M/yyyy")
-                val currentDate = sdf.format(Date())
+                */
 
                 //database things
                 val newDonor = Donor(currentDate, "ABC104", bank, amount)
-                database.child("Donors' Information").child(cardNumber).setValue(newDonor)
+                databaseReference.child("Donors' Information").child(cardNumber).setValue(newDonor)
 
 
                 //bringing values to another activity
@@ -121,6 +135,11 @@ class Payment : AppCompatActivity(), AdapterView.OnItemSelectedListener{
             actionBar.setTitle("Payment")
             actionBar.setDisplayHomeAsUpEnabled(false)
         }
+    }
+
+    private fun generateRandomSixDigitNumber(): Int  {
+        val random = Random()
+        return random.nextInt(900000) + 100000  // Generates a random number between 100000 and 999999
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

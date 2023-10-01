@@ -1,11 +1,13 @@
 package com.example.xpoverty
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.xpoverty.databinding.ReceiptBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+private lateinit var auth: FirebaseAuth
 
 class Receipt : AppCompatActivity() {
     private lateinit var binding : ReceiptBinding
@@ -18,16 +20,17 @@ class Receipt : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference("UserDB")
 
-        binding.tfTransactionNo.setText("ABC104")
+        binding.tfTransactionNo.text = "ABC104"
 
         val intent = intent
         val str = intent.getStringExtra("typeOfBank")
         val str2 = intent.getStringExtra("accountNum")
         val str3 = intent.getStringExtra("amount")
-        binding.tfBankName.setText(str)
-        binding.tfAccountNo.setText(str2)
-        binding.tfPayment.setText(str3)
-        database.child("userList").child("loongxi").child("username").get().addOnSuccessListener {
+        binding.tfBankName.text = str
+        binding.tfAccountNo.text = str2
+        binding.tfPayment.text = str3
+        val username = auth.currentUser
+        database.child("userList").child(username.toString()).get().addOnSuccessListener {
                 binding.tfName.text = it.value.toString()
         }
 
@@ -37,11 +40,11 @@ class Receipt : AppCompatActivity() {
         }
 
         // calling the action bar
-        var actionBar = getSupportActionBar()
+        var actionBar = supportActionBar
 
         // showing the back button in action bar
         if (actionBar != null) {
-            actionBar.setTitle("Receipt")
+            actionBar.title = "Receipt"
             actionBar.setDisplayHomeAsUpEnabled(false)
         }
     }

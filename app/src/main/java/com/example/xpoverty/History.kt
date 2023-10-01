@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.xpoverty.databinding.HistoryBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import java.util.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class History : AppCompatActivity(){
@@ -26,10 +26,10 @@ class History : AppCompatActivity(){
         database = FirebaseDatabase.getInstance().getReference("Donor")
 
 
-        database.child("Donors' Information").child("1234 4567").child("date").get().addOnSuccessListener { date->
-            database.child("Donors' Information").child("1234 4567").child("transactionNo").get().addOnSuccessListener { transaction->
-                database.child("Donors' Information").child("1234 4567").child("bankName").get().addOnSuccessListener { bank ->
-                    database.child("Donors' Information").child("1234 4567").child("amount").get().addOnSuccessListener { amount ->
+        database.child("Name List").child("limzk").child("currentDate").get().addOnSuccessListener { date->
+            database.child("Name List").child("limzk").child("transactionNo").get().addOnSuccessListener { transaction->
+                database.child("Name List").child("limzk").child("bank").get().addOnSuccessListener { bank ->
+                    database.child("Name List").child("limzk").child("amount").get().addOnSuccessListener { amount ->
                         val donorList = listOf(
                             Donor("12/12/2012", "ABC101", "Public Bank", "RM 25"),
                             Donor("5/5/2015", "ABC102", "Maybank", "RM 100"),
